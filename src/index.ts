@@ -11,6 +11,8 @@ import {
   showMarketplace,
 } from "./lib";
 
+export { InitProps } from "./lib/init";
+
 export {
   MessageData,
   PrismaticMessageEvent,
