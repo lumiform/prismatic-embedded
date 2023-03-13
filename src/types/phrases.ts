@@ -1,13 +1,11 @@
 export type SimplePhrase = string;
 
 export type ComplexPhrase<
-  T extends Record<string, string | boolean | number> = Record<
+  T extends Partial<Record<string, string | boolean | number>> = Record<
     string,
     string | boolean | number
   >
-> = T & {
-  _?: string;
-};
+> = T;
 
 export enum PhraseNamespace {
   MARKETPLACE = "integration-marketplace",
@@ -663,7 +661,7 @@ export type PhrasesBase = SharedPhrases & UniquePhrases;
 
 export type PrismaticPhrases<T extends SharedPhrases = SharedPhrases> =
   Partial<{
-    [K in keyof T as `${PhraseNamespace}__${string & K}`]: T[K];
+    [K in keyof T]: T[K];
   }> &
     PhrasesBase;
 
